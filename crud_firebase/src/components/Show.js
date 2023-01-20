@@ -9,15 +9,15 @@ const MySwal = withReactContent(Swal);
 
 const Show = () => {
     // 1.Configuramos los hooks
-    const [products,setProducts] = useState( [] );
+    const [maestros,setMaestros] = useState( [] );
 
     // 2. Referenciamos la DB firestore
-    const productsColletion = collection(db, "products");
+    const maestrosCollection = collection(db, "maestros");
 
     // 3. Funcion para mostrar todos los docs
-    const getProducts = async () => {
-        const data = await getDocs(productsColletion);
-        console.log(data);
+    const getMaestros = async () => {
+        const data = await getDocs(maestrosCollection);
+        console.log(data.docs);
     }
 
     // 4. Funcion para eliminar un doc
@@ -26,7 +26,8 @@ const Show = () => {
 
     // 6. Usamos useEffect
     useEffect( () => {
-        getProducts();
+        getMaestros();
+        // eslint-disable-next-line
     }, [] );
 
     // 7. Devolvemos vista de nuestro componente
